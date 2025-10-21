@@ -15,7 +15,7 @@ const FashionTryOn: React.FC = () => {
   const [handheldImageType, setHandheldImageType] = useState<string | null>(null);
   const [contextPrompt, setContextPrompt] = useState<string>('');
   const [pose, setPose] = useState<string>('');
-  const [aspectRatio, setAspectRatio] = useState<string>('1:1');
+  const [aspectRatio, setAspectRatio] = useState<string>('9:16');
   const [detailedPrompt, setDetailedPrompt] = useState<string>('');
   const [result, setResult] = useState<TryOnResult | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -86,43 +86,35 @@ const FashionTryOn: React.FC = () => {
   }, [modelImage, modelImageType, garmentImage, garmentImageType, accessoryImage, accessoryImageType, handheldImage, handheldImageType, contextPrompt, pose, aspectRatio, detailedPrompt]);
 
   return (
-    <>
-      <header className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-rose-500">
-          Thay Trang Phục Cho Mẫu
-        </h1>
-      </header>
-
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <FashionTryOnInput
-          modelImage={modelImage}
-          modelImageType={modelImageType}
-          garmentImage={garmentImage}
-          garmentImageType={garmentImageType}
-          accessoryImage={accessoryImage}
-          accessoryImageType={accessoryImageType}
-          handheldImage={handheldImage}
-          handheldImageType={handheldImageType}
-          contextPrompt={contextPrompt}
-          pose={pose}
-          aspectRatio={aspectRatio}
-          detailedPrompt={detailedPrompt}
-          isLoading={isLoading}
-          onImageChange={handleImageChange}
-          onContextChange={setContextPrompt}
-          onPoseChange={setPose}
-          onAspectRatioChange={setAspectRatio}
-          onDetailedPromptChange={setDetailedPrompt}
-          onSubmit={handleSubmit}
-        />
-        <FashionTryOnOutput
-          result={result}
-          isLoading={isLoading}
-          error={error}
-          aspectRatio={aspectRatio}
-        />
-      </main>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <FashionTryOnInput
+        modelImage={modelImage}
+        modelImageType={modelImageType}
+        garmentImage={garmentImage}
+        garmentImageType={garmentImageType}
+        accessoryImage={accessoryImage}
+        accessoryImageType={accessoryImageType}
+        handheldImage={handheldImage}
+        handheldImageType={handheldImageType}
+        contextPrompt={contextPrompt}
+        pose={pose}
+        aspectRatio={aspectRatio}
+        detailedPrompt={detailedPrompt}
+        isLoading={isLoading}
+        onImageChange={handleImageChange}
+        onContextChange={setContextPrompt}
+        onPoseChange={setPose}
+        onAspectRatioChange={setAspectRatio}
+        onDetailedPromptChange={setDetailedPrompt}
+        onSubmit={handleSubmit}
+      />
+      <FashionTryOnOutput
+        result={result}
+        isLoading={isLoading}
+        error={error}
+        aspectRatio={aspectRatio}
+      />
+    </div>
   );
 };
 

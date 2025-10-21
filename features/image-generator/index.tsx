@@ -33,33 +33,22 @@ const ImageGenerator: React.FC = () => {
   }, [prompt, aspectRatio]);
 
   return (
-    <>
-      <header className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-teal-500">
-          Text To Image
-        </h1>
-        <p className="mt-2 text-lg text-gray-400">
-          Mô tả bất cứ điều gì bạn có thể tưởng tượng và để AI biến nó thành hình ảnh.
-        </p>
-      </header>
-
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ImageGeneratorInput
-          prompt={prompt}
-          aspectRatio={aspectRatio}
-          isLoading={isLoading}
-          onPromptChange={setPrompt}
-          onAspectRatioChange={setAspectRatio}
-          onSubmit={handleSubmit}
-        />
-        <ImageGeneratorOutput
-          result={result}
-          isLoading={isLoading}
-          error={error}
-          aspectRatio={aspectRatio}
-        />
-      </main>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <ImageGeneratorInput
+        prompt={prompt}
+        aspectRatio={aspectRatio}
+        isLoading={isLoading}
+        onPromptChange={setPrompt}
+        onAspectRatioChange={setAspectRatio}
+        onSubmit={handleSubmit}
+      />
+      <ImageGeneratorOutput
+        result={result}
+        isLoading={isLoading}
+        error={error}
+        aspectRatio={aspectRatio}
+      />
+    </div>
   );
 };
 

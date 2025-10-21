@@ -1,15 +1,29 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Banana Image Editor AI</title>
+    <title>Thuỷ Tiên AI Suite</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       body {
-        background-color: #111827; /* bg-gray-900 */
+        background-color: #0D1117; /* A modern, dark background */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #4A5568; /* gray-600 */
+        border-radius: 3px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: #718096; /* gray-500 */
       }
     </style>
   <script type="importmap">
@@ -23,7 +37,7 @@
 }
 </script>
 </head>
-  <body>
+  <body class="custom-scrollbar">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
   </body>

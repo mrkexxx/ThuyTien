@@ -49,7 +49,6 @@ const CharacterGenerator: React.FC = () => {
     try {
       const apiResult = await generateCharacter(uploadedImages, prompt, aspectRatio);
       setResult(apiResult);
-    // FIX: Removed invalid arrow function syntax (`=>`) from the catch block.
     } catch (err: unknown) {
       const errorMessage = err instanceof Error ? err.message : 'Đã xảy ra một lỗi không mong muốn.';
       setError(errorMessage);
@@ -59,35 +58,24 @@ const CharacterGenerator: React.FC = () => {
   }, [characterImages, prompt, aspectRatio]);
 
   return (
-    <>
-      <header className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-500">
-          Nhân Vật Nhất Quán
-        </h1>
-        <p className="mt-2 text-lg text-gray-400">
-          Tải lên các ảnh của nhân vật, mô tả một bối cảnh, và để AI tạo ra một hình ảnh mới với nhân vật nhất quán.
-        </p>
-      </header>
-
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <CharacterGeneratorInput
-          characterImages={characterImages}
-          prompt={prompt}
-          aspectRatio={aspectRatio}
-          isLoading={isLoading}
-          onImageChange={handleImageChange}
-          onPromptChange={setPrompt}
-          onAspectRatioChange={setAspectRatio}
-          onSubmit={handleSubmit}
-        />
-        <CharacterGeneratorOutput
-          result={result}
-          isLoading={isLoading}
-          error={error}
-          aspectRatio={aspectRatio}
-        />
-      </main>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <CharacterGeneratorInput
+        characterImages={characterImages}
+        prompt={prompt}
+        aspectRatio={aspectRatio}
+        isLoading={isLoading}
+        onImageChange={handleImageChange}
+        onPromptChange={setPrompt}
+        onAspectRatioChange={setAspectRatio}
+        onSubmit={handleSubmit}
+      />
+      <CharacterGeneratorOutput
+        result={result}
+        isLoading={isLoading}
+        error={error}
+        aspectRatio={aspectRatio}
+      />
+    </div>
   );
 };
 

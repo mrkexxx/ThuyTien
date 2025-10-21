@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface WelcomePopupProps {
@@ -19,8 +18,8 @@ const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 transition-opacity duration-300">
-      <div className="bg-gray-800 rounded-2xl shadow-xl max-w-md w-full p-6 text-white border border-gray-700 relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
+    <div className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity duration-300">
+      <div className="bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-xl max-w-md w-full p-6 text-white border border-gray-700 relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
         <style>{`
           @keyframes fade-in-scale {
             0% {
@@ -63,7 +62,7 @@ const WelcomePopup: React.FC<WelcomePopupProps> = ({ isOpen, onClose }) => {
           .
         </p>
         {isZaloVisible && (
-          <div className="mt-4 p-3 bg-gray-900 rounded-lg text-center">
+          <div className="mt-4 p-3 bg-gray-900/70 rounded-lg text-center border border-gray-700">
             <p className="text-lg font-mono tracking-widest text-green-400">
               0392 613 948
             </p>

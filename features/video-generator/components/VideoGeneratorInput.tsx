@@ -27,26 +27,22 @@ const VideoGeneratorInput: React.FC<VideoGeneratorInputProps> = ({
   const isSubmitDisabled = isLoading || !prompt;
 
   return (
-    <div className="flex flex-col gap-6 p-6 bg-gray-800 rounded-2xl shadow-lg">
-      <div>
-        <label htmlFor="prompt-input-video" className="block text-lg font-semibold mb-2 text-gray-300">
-          1. Mô tả video bạn muốn tạo
-        </label>
+    <div className="flex flex-col gap-6 p-6 bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-2xl shadow-lg">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-gray-200">1. Mô tả video bạn muốn tạo</h3>
         <textarea
           id="prompt-input-video"
           value={prompt}
           onChange={(e) => onPromptChange(e.target.value)}
           placeholder="ví dụ: 'Một con tàu vũ trụ neon đang bay qua một thành phố tương lai vào một đêm mưa'"
-          className="w-full h-32 p-4 bg-gray-700 border-2 border-gray-600 rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-colors duration-200 resize-none"
+          className="w-full h-32 p-4 bg-gray-800 border border-gray-700 rounded-xl focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors duration-200 resize-none custom-scrollbar"
           aria-label="Nhập mô tả để tạo video"
         />
       </div>
 
-      <div>
-        <label htmlFor="image-upload-video" className="block text-lg font-semibold mb-2 text-gray-300">
-          2. Thêm hình ảnh ban đầu (Tùy chọn)
-        </label>
-        <div className="w-full aspect-video bg-gray-900/50 rounded-xl flex items-center justify-center relative">
+      <div className="space-y-2">
+        <h3 className="text-lg font-semibold text-gray-200">2. Thêm hình ảnh ban đầu (Tùy chọn)</h3>
+        <div className="w-full aspect-video bg-gray-800/40 rounded-xl flex items-center justify-center relative border-2 border-dashed border-gray-700">
           <input
             type="file"
             id="image-upload-video"
@@ -56,7 +52,7 @@ const VideoGeneratorInput: React.FC<VideoGeneratorInputProps> = ({
           />
           <label
             htmlFor="image-upload-video"
-            className="w-full h-full cursor-pointer flex items-center justify-center"
+            className="w-full h-full cursor-pointer flex items-center justify-center group"
             aria-label="Tải ảnh lên"
           >
             {inputImage ? (
@@ -66,13 +62,13 @@ const VideoGeneratorInput: React.FC<VideoGeneratorInputProps> = ({
                 className="object-contain w-full h-full rounded-xl"
               />
             ) : (
-              <ImagePlaceholder label="Nhấn để tải ảnh lên" icon={<UploadIcon className="w-10 h-10" />} />
+              <ImagePlaceholder label="Nhấn để tải ảnh lên" icon={<UploadIcon className="w-10 h-10 text-gray-500 group-hover:text-gray-400 transition-colors" />} />
             )}
           </label>
            {inputImage && (
             <button 
                 onClick={onRemoveImage}
-                className="absolute top-2 right-2 bg-black/50 text-white rounded-full p-1.5 hover:bg-black/80 transition-colors"
+                className="absolute top-2 right-2 bg-black/60 text-white rounded-full p-1.5 hover:bg-black/80 transition-colors z-10"
                 aria-label="Xóa ảnh"
             >
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -86,10 +82,10 @@ const VideoGeneratorInput: React.FC<VideoGeneratorInputProps> = ({
       <button
         onClick={onSubmit}
         disabled={isSubmitDisabled}
-        className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-gradient-to-r from-green-500 to-cyan-500 text-white font-bold rounded-xl shadow-lg hover:from-green-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+        className="w-full flex items-center justify-center gap-3 py-3 px-6 bg-gradient-to-r from-cyan-500 to-green-500 text-white font-bold rounded-xl shadow-lg hover:shadow-cyan-500/30 transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
       >
+        <SparklesIcon className="w-5 h-5" />
         {isLoading ? 'Đang tạo...' : 'Tạo video'}
-        {!isLoading && <SparklesIcon className="w-5 h-5" />}
       </button>
     </div>
   );

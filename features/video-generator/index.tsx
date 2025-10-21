@@ -54,34 +54,23 @@ const VideoGenerator: React.FC = () => {
   }, [prompt, inputImage, inputImageType]);
 
   return (
-    <>
-      <header className="text-center mb-8">
-        <h1 className="text-4xl sm:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-500">
-          Veo AI Video Generator
-        </h1>
-        <p className="mt-2 text-lg text-gray-400">
-          Biến ý tưởng của bạn thành video chuyển động. Mô tả một cảnh, và AI sẽ tạo ra nó.
-        </p>
-      </header>
-
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <VideoGeneratorInput
-          prompt={prompt}
-          inputImage={inputImage}
-          inputImageType={inputImageType}
-          isLoading={isLoading}
-          onPromptChange={setPrompt}
-          onImageChange={handleImageChange}
-          onRemoveImage={handleRemoveImage}
-          onSubmit={handleSubmit}
-        />
-        <VideoGeneratorOutput
-          result={result}
-          isLoading={isLoading}
-          error={error}
-        />
-      </main>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <VideoGeneratorInput
+        prompt={prompt}
+        inputImage={inputImage}
+        inputImageType={inputImageType}
+        isLoading={isLoading}
+        onPromptChange={setPrompt}
+        onImageChange={handleImageChange}
+        onRemoveImage={handleRemoveImage}
+        onSubmit={handleSubmit}
+      />
+      <VideoGeneratorOutput
+        result={result}
+        isLoading={isLoading}
+        error={error}
+      />
+    </div>
   );
 };
 

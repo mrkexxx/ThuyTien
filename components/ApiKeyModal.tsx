@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { getApiKey, setApiKey } from '../services/geminiClient';
 
@@ -24,7 +23,6 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ isOpen, onClose }) => {
   };
   
   const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    // Prevent closing if no key is set yet
     if (e.target === e.currentTarget && getApiKey()) {
       onClose();
     }
@@ -36,10 +34,10 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ isOpen, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 transition-opacity duration-300"
+      className="fixed inset-0 bg-black bg-opacity-70 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-opacity duration-300"
       onClick={handleOverlayClick}
     >
-      <div className="bg-gray-800 rounded-2xl shadow-xl max-w-lg w-full p-6 text-white border border-gray-700 relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
+      <div className="bg-gray-900/80 backdrop-blur-lg rounded-2xl shadow-xl max-w-lg w-full p-6 text-white border border-gray-700 relative transform transition-all duration-300 scale-95 opacity-0 animate-fade-in-scale">
         <style>{`
           @keyframes fade-in-scale {
             0% { opacity: 0; transform: scale(0.95); }
@@ -75,11 +73,11 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ isOpen, onClose }) => {
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder="Nhập API Key của bạn vào đây"
-            className="w-full p-3 bg-gray-700 border-2 border-gray-600 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+            className="w-full p-3 bg-gray-800 border border-gray-700 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
           />
         </div>
         
-        <div className="bg-gray-900/50 p-3 rounded-lg text-sm text-gray-400 mb-6">
+        <div className="bg-gray-900/70 p-3 rounded-lg text-sm text-gray-400 mb-6 border border-gray-700/50">
             <p className="font-semibold text-gray-300 mb-1">Hướng dẫn lấy API Key:</p>
             <ol className="list-decimal list-inside space-y-1">
                 <li>Truy cập <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline">Google AI Studio</a>.</li>
@@ -91,7 +89,7 @@ const ApiKeyModal: React.FC<ApiKeyModalProps> = ({ isOpen, onClose }) => {
         
         <button
           onClick={handleSave}
-          className="w-full py-3 px-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl shadow-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
+          className="w-full py-3 px-6 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-xl shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105 disabled:opacity-50"
           disabled={!key.trim()}
         >
           Lưu và Sử dụng

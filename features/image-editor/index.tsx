@@ -50,27 +50,25 @@ const ImageEditor: React.FC = () => {
   }, [originalImage, originalImageType, prompt, aspectRatio]);
 
   return (
-    <>
-      <main className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <ImageInput
-          originalImage={originalImage}
-          originalImageType={originalImageType}
-          prompt={prompt}
-          aspectRatio={aspectRatio}
-          isLoading={isLoading}
-          onImageChange={handleImageChange}
-          onPromptChange={setPrompt}
-          onAspectRatioChange={setAspectRatio}
-          onSubmit={handleSubmit}
-        />
-        <ImageOutput
-          result={result}
-          isLoading={isLoading}
-          error={error}
-          aspectRatio={aspectRatio}
-        />
-      </main>
-    </>
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <ImageInput
+        originalImage={originalImage}
+        originalImageType={originalImageType}
+        prompt={prompt}
+        aspectRatio={aspectRatio}
+        isLoading={isLoading}
+        onImageChange={handleImageChange}
+        onPromptChange={setPrompt}
+        onAspectRatioChange={setAspectRatio}
+        onSubmit={handleSubmit}
+      />
+      <ImageOutput
+        result={result}
+        isLoading={isLoading}
+        error={error}
+        aspectRatio={aspectRatio}
+      />
+    </div>
   );
 };
 
