@@ -5,6 +5,7 @@ import ImageGenerator from './features/image-generator';
 import FashionTryOn from './features/fashion-tryon';
 import CharacterGenerator from './features/character-generator';
 import VirtualCorner from './features/virtual-corner';
+import VideoGenerator from './features/video-generator';
 import WelcomePopup from './components/WelcomePopup';
 import ApiKeyModal from './components/ApiKeyModal';
 import { getApiKey } from './services/geminiClient';
@@ -16,7 +17,7 @@ import SettingsIcon from './components/icons/SettingsIcon';
 import SearchIcon from './components/icons/SearchIcon';
 import InfoIcon from './components/icons/InfoIcon';
 
-type Subject = 'editor' | 'generator' | 'fashion' | 'character' | 'virtual';
+type Subject = 'editor' | 'generator' | 'fashion' | 'character' | 'virtual' | 'video';
 
 const App: React.FC = () => {
   const [history, setHistory] = useState<Subject[]>(['fashion']);
@@ -161,6 +162,13 @@ const App: React.FC = () => {
                 Góc Sống Ảo
                 </button>
                 <button
+                onClick={() => handleTabClick('video')}
+                className={navButtonClasses('video', 'bg-cyan-600')}
+                aria-current={activeSubject === 'video' ? 'page' : undefined}
+                >
+                Video AI
+                </button>
+                <button
                 onClick={() => handleTabClick('editor')}
                 className={navButtonClasses('editor', 'bg-purple-600')}
                 aria-current={activeSubject === 'editor' ? 'page' : undefined}
@@ -182,6 +190,7 @@ const App: React.FC = () => {
             {activeSubject === 'fashion' && <FashionTryOn />}
             {activeSubject === 'character' && <CharacterGenerator />}
             {activeSubject === 'virtual' && <VirtualCorner />}
+            {activeSubject === 'video' && <VideoGenerator />}
         </div>
       </main>
       <WelcomePopup isOpen={isPopupVisible} onClose={handleClosePopup} />
